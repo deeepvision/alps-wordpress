@@ -1,11 +1,29 @@
 @extends('layouts.app')
 @section('content')
   @php
+
     $hide_sidebar = get_alps_option('index_hide_sidebar');
     $posts_grid = get_alps_option('posts_grid');
     $post_grid_3up = get_alps_option('posts_grid_3up');
     $posts_image = get_alps_option('posts_image');
     $posts_image_round = get_alps_option('posts_image_round');
+
+    $blog_page_title = myprefix_get_theme_option( 'blog_title' );
+    $blog_sidebar = myprefix_get_theme_option( 'blog_sidebar' );
+    $sidebar_right = true;
+
+    switch ($blog_sidebar){
+        case 'none':
+            $hide_sidebar = 'true';
+        break;
+        case 'left':
+            $sidebar_right = false;
+        break;
+        default:
+            $sidebar_right = true;
+        break;
+
+    }
     if (is_active_sidebar('sidebar-posts') && $hide_sidebar != 'true') {
       $section_offset = 'u-shift--left--1-col--at-xxlarge';
       $article_offset = 'l-grid-item--xl--3-col';
@@ -17,9 +35,18 @@
   @endphp
   @include('patterns.02-organisms.sections.page-header')
   <section id="top" class="l-main__content l-grid l-grid--7-col {{ $section_offset }} l-grid-wrap--6-of-7 u-spacing--double--until-xxlarge u-padding--zero--sides">
-    <article @php post_class("c-article l-grid-item l-grid-item--l--4-col $article_offset") @endphp>
+      @if (is_active_sidebar('sidebar-posts') && $hide_sidebar != 'true' && $sidebar_right == false)
+          <div class="c-sidebar l-grid-item l-grid-item--l--2-col l-grid-item--xl--2-col u-padding--zero--sides">
+              <div class="u-spacing--double u-padding--right">
+                  @php dynamic_sidebar('sidebar-posts') @endphp
+              </div>
+          </div> <!-- /.c-sidebar -->
+      @endif
+      <article @php post_class("c-article l-grid-item l-grid-item--l--4-col $article_offset") @endphp>
       <div class="c-article__body">
-        @if (is_active_sidebar('category-top'))
+          <?php echo ($blog_page_title)?'<h2>'.$blog_page_title.'</h2>':'';?>
+
+      @if (is_active_sidebar('category-top'))
           @php dynamic_sidebar('category-top') @endphp
         @endif
         @if (have_posts())
@@ -131,7 +158,7 @@
         @endif
       </div>
     </article>
-    @if (is_active_sidebar('sidebar-posts') && $hide_sidebar != 'true')
+    @if (is_active_sidebar('sidebar-posts') && $hide_sidebar != 'true' && $sidebar_right == true)
       <div class="c-sidebar l-grid-item l-grid-item--l--2-col l-grid-item--xl--2-col u-padding--zero--sides">
         <div class="u-spacing--double u-padding--right">
           @php dynamic_sidebar('sidebar-posts') @endphp

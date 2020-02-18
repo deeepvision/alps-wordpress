@@ -13,6 +13,7 @@ use Roots\Sage\Template\BladeProvider;
 add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('sage/main.css', asset_path('styles/main.css'), false, null);
     wp_enqueue_script('sage/main.js', asset_path('scripts/main.js'), ['jquery'], null, true);
+    
     /*
     if (!is_admin()) {
       wp_deregister_script('jquery');
@@ -21,6 +22,7 @@ add_action('wp_enqueue_scripts', function () {
     }
     */
 }, 100);
+
 
 /**
  * Theme setup
@@ -31,6 +33,11 @@ add_action('after_setup_theme', function () {
    * Make theme available for translation.
      * Translations can be filed in the /lang/ directory.
    */
+    
+  
+    require_once get_template_directory() . '/vendor/custom_class/WPEX_Theme_Options.php';
+    $res = new \WPEX_Theme_Options();
+    
     load_theme_textdomain('alps', get_template_directory() . '/lang');
 
     /**
@@ -160,7 +167,8 @@ add_action('after_setup_theme', function () {
         (new BladeProvider($app))->register();
         return new Blade($app['view']);
     });
-
+    
+    
     /**
      * Create @asset() Blade directive
      */
