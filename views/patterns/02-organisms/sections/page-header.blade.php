@@ -17,13 +17,21 @@
   $page_header_content_class = 'u-shift--left--1-col--at-xxlarge';
 
   if (is_home()) {
-    $long_header_title = __('Recent Posts', 'alps');
+    if (get_alps_option('posts_page_title')) {
+      $long_header_title = get_alps_option('posts_page_title');
+    } else {
+      $long_header_title = __('Recent Posts', 'alps');
+    }
   }
   elseif (is_archive()) {
     if (get_alps_option('posts_label')) {
       $long_header_kicker = __('Category', 'alps');
     }
-    $long_header_title = single_cat_title('', false);
+    if (get_alps_option('archive_page_title')) {
+      $long_header_title = get_alps_option('archive_page_title');
+    } else {
+      $long_header_title = single_cat_title('', false);
+    }
   }
 
   if (!is_home() && !is_archive()) {
