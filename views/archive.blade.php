@@ -8,8 +8,8 @@
           $posts_image = get_alps_option('posts_image');
           $posts_image_round = get_alps_option('posts_image_round');
 
-          $archive_page_title = myprefix_get_theme_option( 'archive_title' );
-          $archive_sidebar = myprefix_get_theme_option( 'archive_sidebar' );
+          $archive_page_title = get_alps_option( 'archive_title' );
+          $archive_sidebar = get_alps_option( 'archive_sidebar' );
           $sidebar_right = true;
 
           switch ($archive_sidebar){

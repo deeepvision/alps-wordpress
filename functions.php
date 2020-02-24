@@ -428,6 +428,7 @@ add_filter('allowed_block_types', function () {
     'core/shortcode',
     'core/video',
     'core/html',
+    'core/freeform',
     'core/embed',
     'core/paragraph',
     'alps-gutenberg-blocks/accordion',
@@ -446,6 +447,7 @@ add_filter('allowed_block_types', function () {
     'nextgenthemes/arve-block',
   ];
 });
+
 
 /**
  *Provides automatic updates for the WordPress theme and plugins from Kernl (https://kernl.us/)

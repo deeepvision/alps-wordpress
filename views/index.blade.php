@@ -8,8 +8,8 @@
     $posts_image = get_alps_option('posts_image');
     $posts_image_round = get_alps_option('posts_image_round');
 
-    $blog_page_title = myprefix_get_theme_option( 'blog_title' );
-    $blog_sidebar = myprefix_get_theme_option( 'blog_sidebar' );
+    $blog_page_title = get_alps_option( 'blog_title' );
+    $blog_sidebar = get_alps_option( 'blog_sidebar' );
     $sidebar_right = true;
 
     switch ($blog_sidebar){

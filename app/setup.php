@@ -33,11 +33,7 @@ add_action('after_setup_theme', function () {
    * Make theme available for translation.
      * Translations can be filed in the /lang/ directory.
    */
-    
   
-    require_once get_template_directory() . '/vendor/custom_class/WPEX_Theme_Options.php';
-    $res = new \WPEX_Theme_Options();
-    
     load_theme_textdomain('alps', get_template_directory() . '/lang');
 
     /**

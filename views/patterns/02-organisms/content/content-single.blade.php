@@ -18,7 +18,6 @@
 
   $has_dropcap = true;
   $classes = "has-dropcap";
-
   if (get_post_meta($post->ID , $cf_.'hide_dropcap', true) == true) {
     $has_dropcap = false;
     $classes = "";
@@ -28,7 +27,7 @@
 <section id="top" class="l-main__content l-grid l-grid--7-col {{ $section_offset }} l-grid-wrap--6-of-7 u-spacing--double--until-large">
   <div class="c-article l-grid-item l-grid-item--l--4-col {{ $article_offset }}">
     <article @php post_class("text c-article__body u-spacing--double $classes") @endphp>
-      @php the_content() @endphp
+          @php the_content() @endphp
       @include('patterns.02-organisms.sections.article-footer')
     </article>
   </div>

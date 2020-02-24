@@ -70,5 +70,19 @@ function crb_attach_theme_options()
       Field::make('text', 'footer_phone', __('Phone Number'))->set_width(50)
     ))->set_min(1)->set_max(1),
     Field::make('image', 'footer_logo_icon', __('Footer Logo Icon'))->set_help_text('Upload a logo icon for the footer. * Will only display if the sabbath column is hidden.')
+  ))->add_tab(__('BLOG SETTINGS'), array(
+      Field::make('text', 'blog_title', __('Title')),
+      Field::make('select', 'blog_sidebar', __('Sidebar'))->add_options(array(
+          'none' => __('Hide'),
+          'left' => __('Left'),
+          'right' => __('Right')
+      ))->set_width(33)
+  ))->add_tab(__('ARCHIVE SETTINGS'), array(
+      Field::make('text', 'archive_title', __('Title')),
+      Field::make('select', 'archive_sidebar', __('Sidebar'))->add_options(array(
+          'none' => __('Hide'),
+          'left' => __('Left'),
+          'right' => __('Right')
+      ))->set_width(33)
   ));
 }
