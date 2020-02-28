@@ -3,6 +3,11 @@
   @php
 
     $hide_sidebar = get_alps_option('index_hide_sidebar');
+
+    if (is_archive()) {
+        $hide_sidebar = get_alps_option('archive_hide_sidebar');
+    }
+
     $posts_grid = get_alps_option('posts_grid');
     $post_grid_3up = get_alps_option('posts_grid_3up');
     $posts_image = get_alps_option('posts_image');
