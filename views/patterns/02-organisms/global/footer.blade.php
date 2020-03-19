@@ -46,7 +46,6 @@
     @if ($hide_sabbath == true)
       <div class="l-grid-item--7-col l-grid-item--m--1-col c-footer__logo u-path-fill--white">
         @if ($footer_logo)
-          @php echo $footer_logo @endphp
           <img class="style-svg" src="{{ wp_get_attachment_url($footer_logo) }}" alt="{{ get_post_meta($footer_logo, '_wp_attachment_image_alt', true) }}">
         @else
           @include('patterns.00-atoms.icons.icon-logo-footer')
